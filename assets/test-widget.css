@@ -1,0 +1,13 @@
+.test-widget {
+    display: flex;
+}
+
+.test-widget-img-container {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 2em;
+}
+
+.test-widget-title {
+    font-weight: 700;
+}
