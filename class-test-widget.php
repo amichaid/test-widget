@@ -74,6 +74,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
     {
 
         $settings = $this->get_settings_for_display();
+
         if (!isset($settings) || !is_array($settings) || empty($settings)) {
             return;
         }
