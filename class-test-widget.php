@@ -73,32 +73,36 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base
     protected function render()
     {
 
-        // Get settings.
-        $img_settings = $this->get_settings_for_display('image');
-        $title = $this->get_settings_for_display('title');
-        $description = $this->get_settings_for_display('description');
-
-        if (!isset($img_settings) || !is_array($img_settings) || empty($img_settings)) {
+        $settings = $this->get_settings_for_display();
+        if (!isset($settings) || !is_array($settings) || empty($settings)) {
             return;
         }
+
+        // Get settings.
+        $img_settings = $settings['image'];
+        $title = $settings['title'];
+        $description = $settings['description'];
 
         // Start card.
         echo '<div class="test-widget">';
 
         // Card image.
-        $img_id = $img_settings['id'];
+        if (isset($img_settings) && is_array($img_settings) && !empty($img_settings)) {
 
-        if (isset($img_id) && is_int($img_id) && 0 < $img_id) {
+            $img_id = $img_settings['id'];
 
-            $img_array = wp_get_attachment_image_src($img_id, 'thumbnail', false);
-            $img_url = $img_array[0];
+            if (isset($img_id) && is_int($img_id) && 0 < $img_id) {
 
-            if (isset($img_url) && !empty($img_url)) {
+                $img_array = wp_get_attachment_image_src($img_id, 'thumbnail', false);
+                $img_url = $img_array[0];
 
-                echo '<div class="test-widget-img-container">';
-                echo '<img src="' . esc_url($img_url) . '"/>';
-                echo '</div>';
+                if (isset($img_url) && !empty($img_url)) {
 
+                    echo '<div class="test-widget-img-container">';
+                    echo '<img src="' . esc_url($img_url) . '"/>';
+                    echo '</div>';
+
+                }
             }
         }
 
