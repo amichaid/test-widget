@@ -4,15 +4,15 @@
  * Version: 1.0
  */
 
-define('TEST_WIDGET_URL',plugin_dir_url(__FILE__));
-const TEST_WIDGET_VER = 1.0;
+define('TEST_WIDGET_URL', plugin_dir_url(__FILE__));
+define('TEST_WIDGET_VER', '1.0');
 
 add_action('init', 'init_widget_test');
 add_action('wp_enqueue_scripts', 'widget_test_enqueue_styles');
 
 function init_widget_test()
 {
-    require 'class-widget-test.php';
+    require 'class-test-widget.php';
 
     $test_widget = new Elementor_Test_Widget();
 
